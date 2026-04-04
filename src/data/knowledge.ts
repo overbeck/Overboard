@@ -1,0 +1,86 @@
+import type { KnowledgeDoc } from '../types';
+
+export const knowledgeDocs: KnowledgeDoc[] = [
+  {
+    id: 'k1',
+    title: 'PSoC 4 BLE — CapSense Configuration Guide',
+    category: 'Firmware',
+    tags: ['PSoC', 'BLE', 'CapSense', 'Infineon', 'C'],
+    lastUpdated: '2026-03-20',
+    preview: 'How to configure CapSense widgets, tuning parameters, and BLE GATT profiles for the CY8C4247LQI. Includes scan order, noise filtering, and multi-channel setups used in Pink Elephant.',
+  },
+  {
+    id: 'k2',
+    title: 'Eurorack Power Standard — +/-12V, 5V Rail Design',
+    category: 'Power',
+    tags: ['Eurorack', 'Power', 'PCB', 'LM317', 'Rails'],
+    lastUpdated: '2026-02-28',
+    preview: 'Design notes for Eurorack-compatible power headers. Decoupling strategy, reverse-polarity protection, and current budgeting. Reference implementation for Purple Jellyfish.',
+  },
+  {
+    id: 'k3',
+    title: 'I2S Audio Protocol — Timing & RP2040 PIO',
+    category: 'Digital Audio',
+    tags: ['I2S', 'RP2040', 'PIO', 'PCM5102A', 'DSP'],
+    lastUpdated: '2026-03-15',
+    preview: 'Deep dive into I2S timing requirements, LRCK/BCLK ratios, and how to implement custom I2S using RP2040 PIO state machines for Silver Dolphin DSP modules.',
+  },
+  {
+    id: 'k4',
+    title: 'VL53L1X ToF Sensor — Multi-Device I2C Addressing',
+    category: 'Sensors',
+    tags: ['VL53L1X', 'ToF', 'I2C', 'Purple Jellyfish', 'STM'],
+    lastUpdated: '2026-03-18',
+    preview: 'Technique for running 4x VL53L1X sensors on a single I2C bus using XSHUT GPIO sequencing. Includes address assignment, ranging mode selection, and interrupt handling.',
+  },
+  {
+    id: 'k5',
+    title: 'Jazz Harmony — Upper Structure Triads & Voicing Logic',
+    category: 'Music Theory',
+    tags: ['Jazz', 'Harmony', 'Voicing', 'Upper Structures', 'Theory'],
+    lastUpdated: '2026-03-25',
+    preview: 'Reference document for upper structure triad relationships across all dominant chord types. Relevant to the Overchord real-time analysis engine and Plexus harmonic suggestion module.',
+  },
+  {
+    id: 'k6',
+    title: 'MIDI 2.0 — UMP Format & Property Exchange',
+    category: 'Protocols',
+    tags: ['MIDI 2.0', 'UMP', 'Protocol', 'Silver Dolphin'],
+    lastUpdated: '2026-04-01',
+    preview: 'Overview of MIDI 2.0 Universal MIDI Packet format, backwards compatibility with MIDI 1.0, and Property Exchange for dynamic device configuration. Target protocol for Silver Dolphin.',
+  },
+  {
+    id: 'k7',
+    title: 'OPA2134 vs NE5532 — Audio Op-Amp Selection Guide',
+    category: 'Analog',
+    tags: ['Op-Amp', 'OPA2134', 'NE5532', 'Audio', 'Analog'],
+    lastUpdated: '2026-01-15',
+    preview: 'Comparative analysis of key audio op-amps: noise floor, slew rate, harmonic distortion, and cost trade-offs. Recommendations for different stages: input buffers, summing amps, output drivers.',
+  },
+  {
+    id: 'k8',
+    title: 'KiCad 8 — Project Structure & Symbol Libraries',
+    category: 'EDA',
+    tags: ['KiCad', 'PCB', 'EDA', 'Schematic', 'Workflow'],
+    lastUpdated: '2026-02-10',
+    preview: 'Project setup, custom symbol and footprint library management, and hierarchical schematic organisation for complex multi-board projects like Pink Elephant.',
+  },
+  {
+    id: 'k9',
+    title: 'USB-C Power Delivery — PD Negotiation with FUSB302',
+    category: 'Power',
+    tags: ['USB-C', 'PD', 'FUSB302', 'Power', 'Pink Elephant'],
+    lastUpdated: '2026-03-05',
+    preview: 'FUSB302 firmware integration for USB PD negotiation. State machine implementation, PDO selection for 65W (20V/3.25A) operation, and cable e-marker detection.',
+  },
+  {
+    id: 'k10',
+    title: 'CV/Gate Standards — Eurorack Voltage Ranges & Scaling',
+    category: 'Analog',
+    tags: ['CV', 'Gate', 'Eurorack', 'DAC8564', 'Scaling'],
+    lastUpdated: '2026-03-12',
+    preview: '1V/oct tracking, Hz/V compatibility, gate/trigger voltage levels, and bipolar CV generation. DAC8564 output scaling and calibration procedure for Purple Jellyfish.',
+  },
+];
+
+export const knowledgeCategories = ['All', 'Firmware', 'Power', 'Digital Audio', 'Sensors', 'Music Theory', 'Protocols', 'Analog', 'EDA'];
