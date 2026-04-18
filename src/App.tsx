@@ -13,7 +13,7 @@ import Strategy from './pages/Strategy';
 
 export default function App() {
   return (
-    <BrowserRouter basename="/overboard">
+    <BrowserRouter basename="/">
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Dashboard />} />
