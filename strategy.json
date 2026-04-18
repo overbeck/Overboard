@@ -1,0 +1,72 @@
+{
+  "phases": [
+    {
+      "id": "phase-1",
+      "number": 1,
+      "title": "Stabilise",
+      "subtitle": "Stop the financial bleed, create breathing room",
+      "timeframe": "0–6 months",
+      "status": "active",
+      "linkedSystems": [],
+      "goals": [
+        { "id": "p1-g1", "text": "Establish one reliable income stream (session work, consultancy, or teaching)", "done": false },
+        { "id": "p1-g2", "text": "Register all IP through Overbeck Music Ltd — system designs, methods, catalogue", "done": false },
+        { "id": "p1-g3", "text": "Submit Arts Council England grant application", "done": false },
+        { "id": "p1-g4", "text": "Submit PRS Foundation grant application", "done": false },
+        { "id": "p1-g5", "text": "Submit Innovate UK grant application (CHI paper as credential)", "done": false }
+      ]
+    },
+    {
+      "id": "phase-2",
+      "number": 2,
+      "title": "Build the Asset",
+      "subtitle": "Get one thing to market",
+      "timeframe": "6–18 months",
+      "status": "upcoming",
+      "linkedSystems": ["silver-dolphin"],
+      "goals": [
+        { "id": "p2-g1", "text": "Choose one system (Manibus or Silver Dolphin) and finish to stageable, demonstrable standard", "done": false },
+        { "id": "p2-g2", "text": "Perform publicly with chosen system and document professionally", "done": false },
+        { "id": "p2-g3", "text": "Produce and release one strong performance video", "done": false },
+        { "id": "p2-g4", "text": "Build sync-ready catalogue — minimum 2–3 tracks per month via Overbeck Music Ltd", "done": false }
+      ]
+    },
+    {
+      "id": "phase-3",
+      "number": 3,
+      "title": "Monetise the IP",
+      "subtitle": "Turn assets into income",
+      "timeframe": "18 months–3 years",
+      "status": "upcoming",
+      "linkedSystems": [],
+      "goals": [
+        { "id": "p3-g1", "text": "License or sell system designs to artists or manufacturers", "done": false },
+        { "id": "p3-g2", "text": "Launch boutique hardware run (Manibus units at boutique pricing)", "done": false },
+        { "id": "p3-g3", "text": "Establish direct sync licensing — contact music supervisors directly", "done": false },
+        { "id": "p3-g4", "text": "Sign first external artist to Overbeck Music Ltd publisher side", "done": false }
+      ]
+    },
+    {
+      "id": "phase-4",
+      "number": 4,
+      "title": "Scale",
+      "subtitle": "Passive income exceeds active income",
+      "timeframe": "3–5 years",
+      "status": "upcoming",
+      "linkedSystems": [],
+      "goals": [
+        { "id": "p4-g1", "text": "Catalogue royalties compounding as primary income stream", "done": false },
+        { "id": "p4-g2", "text": "Licensed hardware generating revenue without active time investment", "done": false },
+        { "id": "p4-g3", "text": "Overbeck Music Ltd operating as a business with a signed roster", "done": false },
+        { "id": "p4-g4", "text": "Passive income exceeds active income", "done": false }
+      ]
+    }
+  ],
+  "immediateActions": [
+    { "id": "ia-1", "text": "Assess current status of Manibus — determine if stageable within 6 months", "done": false },
+    { "id": "ia-2", "text": "Assess current status of Silver Dolphin — same evaluation", "done": false },
+    { "id": "ia-3", "text": "Choose which system to prioritise for Phase 2 entry point", "done": false }
+  ],
+  "lastUpdated": "2026-04-18",
+  "updatedBy": "overbeck"
+}

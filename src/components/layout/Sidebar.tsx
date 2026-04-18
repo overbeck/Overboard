@@ -1,11 +1,12 @@
 import { NavLink, useLocation } from 'react-router-dom';
 import {
   LayoutDashboard, Cpu, FileCode2, Package, Image,
-  BookOpen, GitFork, Box, ChevronRight
+  BookOpen, GitFork, Box, ChevronRight, Target
 } from 'lucide-react';
 
 const navItems = [
   { to: '/', label: 'Dashboard', icon: LayoutDashboard, exact: true },
+  { to: '/strategy', label: 'Strategy', icon: Target },
   { to: '/systems', label: 'Systems', icon: Cpu },
   { to: '/schematics', label: 'Schematics', icon: FileCode2 },
   { to: '/step-files', label: 'Step Files', icon: Box },

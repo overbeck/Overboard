@@ -93,3 +93,33 @@ export interface MediaItem {
   type: 'image' | 'video';
   placeholder: string;
 }
+
+export interface StrategyGoal {
+  id: string;
+  text: string;
+  done: boolean;
+}
+
+export interface StrategyPhase {
+  id: string;
+  number: number;
+  title: string;
+  subtitle: string;
+  timeframe: string;
+  status: 'active' | 'upcoming' | 'complete';
+  linkedSystems: string[];
+  goals: StrategyGoal[];
+}
+
+export interface ImmediateAction {
+  id: string;
+  text: string;
+  done: boolean;
+}
+
+export interface StrategyData {
+  phases: StrategyPhase[];
+  immediateActions: ImmediateAction[];
+  lastUpdated: string;
+  updatedBy: string;
+}

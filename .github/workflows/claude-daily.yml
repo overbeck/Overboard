@@ -1,0 +1,78 @@
+name: Claude Daily Improvements
+
+on:
+  schedule:
+    # 8am UTC weekdays
+    - cron: '0 8 * * 1-5'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  improve:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install project dependencies
+        run: npm install
+
+      - name: Install Claude Code CLI
+        run: npm install -g @anthropic-ai/claude-code
+
+      - name: Run Claude improvement session
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          claude -p "$(cat .github/claude-prompt.md)" --dangerously-skip-permissions
+
+      - name: Verify build passes
+        run: npm run build
+
+      - name: Commit and push to branch
+        id: commit
+        run: |
+          BRANCH="claude/daily-$(date +%Y-%m-%d-%H%M)"
+          git config user.name "Claude"
+          git config user.email "noreply@anthropic.com"
+          git checkout -b "$BRANCH"
+          git add -A
+          if git diff --staged --quiet; then
+            echo "No changes made — skipping PR"
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "feat: Overboard improvements $(date +%Y-%m-%d)"
+            git push origin "$BRANCH"
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "branch=$BRANCH" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Create pull request
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TASK=$(grep -m1 '^\- \[x\]' tasks.md | sed 's/^- \[x\] //' | cut -c1-80 || echo "daily improvement")
+          gh pr create \
+            --title "Claude: $TASK ($(date +%Y-%m-%d))" \
+            --body "$(cat <<'EOF'
+          Automated improvement session by Claude Code.
+
+          **What changed:** see tasks.md for the completed task and any newly added items.
+
+          Review the diff, then merge to deploy to GitHub Pages.
+          EOF
+          )" \
+            --base main \
+            --head "${{ steps.commit.outputs.branch }}"
