@@ -9,6 +9,7 @@ import Media from './pages/Media';
 import Knowledge from './pages/Knowledge';
 import Repos from './pages/Repos';
 import StepFiles from './pages/StepFiles';
+import Strategy from './pages/Strategy';
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Dashboard />} />
+          <Route path="strategy" element={<Strategy />} />
           <Route path="systems" element={<Systems />} />
           <Route path="systems/:id" element={<SystemDetail />} />
           <Route path="schematics" element={<Schematics />} />

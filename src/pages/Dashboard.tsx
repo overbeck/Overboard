@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
-import { GitCommit, Upload, FileText, Package, Wrench, ArrowRight, Cpu, FileCode2, Box, BookOpen } from 'lucide-react';
+import { GitCommit, Upload, FileText, Package, Wrench, ArrowRight, Cpu, FileCode2, Box, BookOpen, Target, CheckSquare } from 'lucide-react';
 import { systems } from '../data/systems';
 import { parts } from '../data/parts';
 import { schematics } from '../data/schematics';
 import { repos } from '../data/repos';
 import { activity } from '../data/activity';
 import { stepFiles } from '../data/stepfiles';
+import { defaultStrategy } from '../data/strategy';
 
 const systemAccents: Record<string, { bg: string; border: string; dot: string; text: string }> = {
   pink: { bg: 'bg-pink-950/30', border: 'border-pink-900/40', dot: 'bg-pink-400', text: 'text-pink-400' },
@@ -152,6 +153,49 @@ export default function Dashboard() {
                 <span className="text-xs font-mono text-[#f0f0f0]">{parts.length}</span>
               </div>
             </div>
+          </div>
+
+          <div>
+            <div className="flex items-center justify-between mb-3">
+              <h3 className="text-xs font-mono text-[#555] uppercase tracking-widest">Strategy</h3>
+              <Link to="/strategy" className="text-xs text-[#555] hover:text-[#f0f0f0] flex items-center gap-1 transition-colors">
+                View <ArrowRight size={11} />
+              </Link>
+            </div>
+            {(() => {
+              const activePhase = defaultStrategy.phases.find((p) => p.status === 'active');
+              const allGoals = defaultStrategy.phases.flatMap((p) => p.goals);
+              const doneGoals = allGoals.filter((g) => g.done).length;
+              const pct = Math.round((doneGoals / allGoals.length) * 100);
+              const nextAction = defaultStrategy.immediateActions.find((a) => !a.done);
+              return (
+                <div className="card p-4 space-y-3 border-emerald-900/30 bg-emerald-950/10">
+                  {activePhase && (
+                    <div className="flex items-center gap-2">
+                      <Target size={12} className="text-emerald-400 flex-shrink-0" />
+                      <span className="text-xs text-[#ccc]">
+                        Phase {activePhase.number}: <span className="text-emerald-400">{activePhase.title}</span>
+                      </span>
+                    </div>
+                  )}
+                  <div>
+                    <div className="flex items-center justify-between mb-1.5">
+                      <span className="text-[10px] text-[#555]">Overall progress</span>
+                      <span className="text-[10px] font-mono text-[#888]">{doneGoals}/{allGoals.length}</span>
+                    </div>
+                    <div className="w-full h-1 bg-[#1a1a1a] rounded-full overflow-hidden">
+                      <div className="h-full bg-emerald-600 rounded-full transition-all" style={{ width: `${pct}%` }} />
+                    </div>
+                  </div>
+                  {nextAction && (
+                    <div className="flex items-start gap-2">
+                      <CheckSquare size={11} className="text-amber-500 mt-0.5 flex-shrink-0" />
+                      <span className="text-[10px] text-[#666] leading-relaxed line-clamp-2">{nextAction.text}</span>
+                    </div>
+                  )}
+                </div>
+              );
+            })()}
           </div>
 
           <div>
