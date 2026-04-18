@@ -1,6 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './components/layout/Layout';
 import Dashboard from './pages/Dashboard';
+import LoginPage from './auth/LoginPage';
+import { useAuth } from './auth/AuthContext';
 import Systems from './pages/Systems';
 import SystemDetail from './pages/systems/SystemDetail';
 import Schematics from './pages/Schematics';
@@ -12,6 +14,9 @@ import StepFiles from './pages/StepFiles';
 import Strategy from './pages/Strategy';
 
 export default function App() {
+  const { user } = useAuth();
+  if (!user) return <LoginPage />;
+
   return (
     <BrowserRouter basename="/">
       <Routes>
